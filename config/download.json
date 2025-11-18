@@ -1,0 +1,68 @@
+{
+  "version": "10.5.2",
+  "releaseDate": "2025-01-15",
+  "changelog": [
+    {
+      "version": "10.5.2",
+      "date": "2025-01-15",
+      "changes": [
+        "新增：表情包反应功能增强",
+        "优化：视频通话质量提升",
+        "修复：部分设备上的崩溃问题",
+        "改进：消息搜索速度"
+      ]
+    },
+    {
+      "version": "10.5.0",
+      "date": "2025-01-01",
+      "changes": [
+        "新增：频道统计功能",
+        "新增：自定义emoji支持",
+        "优化：大文件传输速度",
+        "修复：已知bug"
+      ]
+    },
+    {
+      "version": "10.4.5",
+      "date": "2024-12-15",
+      "changes": [
+        "新增：语音转文字功能",
+        "优化：界面流畅度",
+        "改进：电池续航表现",
+        "修复：部分翻译问题"
+      ]
+    }
+  ],
+  "downloads": {
+    "android": {
+      "playStore": "https://play.google.com/store/apps/details?id=org.telegram.messenger",
+      "apkDirect": "https://telegram.org/dl/android/apk",
+      "fileSize": "45.2 MB",
+      "minVersion": "Android 6.0+"
+    },
+    "ios": {
+      "appStore": "https://apps.apple.com/app/telegram-messenger/id686449807",
+      "fileSize": "124.5 MB",
+      "minVersion": "iOS 12.0+"
+    },
+    "windows": {
+      "downloadUrl": "https://telegram.org/dl/desktop/win64",
+      "fileSize": "52.3 MB",
+      "minVersion": "Windows 7+"
+    },
+    "mac": {
+      "downloadUrl": "https://telegram.org/dl/desktop/mac",
+      "fileSize": "89.7 MB",
+      "minVersion": "macOS 10.12+"
+    },
+    "linux": {
+      "downloadUrl": "https://telegram.org/dl/desktop/linux",
+      "fileSize": "67.8 MB",
+      "minVersion": "Ubuntu 18.04+"
+    },
+    "web": {
+      "url": "https://web.telegram.org",
+      "description": "无需下载，浏览器直接使用"
+    }
+  }
+}
