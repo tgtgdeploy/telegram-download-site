@@ -1,13 +1,10 @@
-import { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Telegram - 小米应用商店官方下载',
-  description: 'Telegram小米应用商店官方下载页。小米手机专属优化版本，完美适配MIUI系统，免费安全的即时通讯应用。',
-  keywords: ['Telegram小米应用商店', 'Telegram小米下载', 'Telegram MIUI', 'Telegram小米手机', 'Telegram红米'],
-}
+import { useMobile } from '@/hooks'
 
 export default function XiaomiDownloadPage() {
   const apkUrl = "https://bsuvzqihxbgoclfvgbhx.supabase.co/storage/v1/object/public/downloads/Telegram.apk"
+  const isMobile = useMobile()
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -28,15 +25,15 @@ export default function XiaomiDownloadPage() {
 
       <main className="max-w-6xl mx-auto px-4 py-6">
         {/* App Card */}
-        <div className="bg-white rounded-3xl shadow-md p-6 mb-4">
-          <div className="flex gap-5 items-start mb-6">
+        <div className={`bg-white rounded-3xl shadow-md ${isMobile ? 'p-4' : 'p-6'} mb-4`}>
+          <div className={`flex ${isMobile ? 'gap-3' : 'gap-5'} items-start mb-6`}>
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='50%25' x2='50%25' y1='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2337aee2'/%3E%3Cstop offset='100%25' style='stop-color:%231e96c8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='240' height='240' fill='url(%23a)' rx='55'/%3E%3Cpath fill='%23fff' d='M98 175c-3.888 0-3.227-1.468-4.568-5.17L82 132.207 170 80'/%3E%3Cpath fill='%23d2e5f1' d='M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035'/%3E%3Cpath fill='%23b5cfe4' d='M100.04 144.41l48.36 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.08-3.08-11.746-8.36-9.349l-115.59 44.571c-7.89 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.91 3.776 1.258'/%3E%3C/svg%3E"
               alt="Telegram"
-              className="w-24 h-24 rounded-3xl shadow-lg flex-shrink-0"
+              className={`${isMobile ? 'w-20 h-20' : 'w-24 h-24'} rounded-3xl shadow-lg flex-shrink-0`}
             />
             <div className="flex-1">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Telegram</h1>
+              <h1 className={`${isMobile ? 'text-2xl' : 'text-3xl'} font-bold text-gray-900 mb-2`}>Telegram</h1>
               <div className="text-sm text-gray-600 mb-3">社交聊天 · Telegram FZ-LLC</div>
               <div className="flex items-center gap-6 text-sm mb-4">
                 <div className="flex items-center gap-1">
@@ -56,7 +53,7 @@ export default function XiaomiDownloadPage() {
                 <a
                   href={apkUrl}
                   download="Telegram.apk"
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-12 py-3 rounded-full font-bold text-base transition-all shadow-lg"
+                  className={`bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white ${isMobile ? 'px-8 py-2.5 text-sm' : 'px-12 py-3 text-base'} rounded-full font-bold transition-all shadow-lg`}
                 >
                   下载安装
                 </a>
@@ -155,16 +152,16 @@ export default function XiaomiDownloadPage() {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-3xl shadow-xl p-8 text-center text-white">
-          <div className="text-3xl mb-2">📱</div>
-          <h2 className="text-2xl font-bold mb-3">小米手机专属版本</h2>
-          <p className="text-white/90 mb-6 max-w-md mx-auto">
+        <div className={`bg-gradient-to-r from-orange-500 to-orange-600 rounded-3xl shadow-xl ${isMobile ? 'p-6' : 'p-8'} text-center text-white`}>
+          <div className={`${isMobile ? 'text-2xl' : 'text-3xl'} mb-2`}>📱</div>
+          <h2 className={`${isMobile ? 'text-xl' : 'text-2xl'} font-bold mb-3`}>小米手机专属版本</h2>
+          <p className={`text-white/90 mb-6 max-w-md mx-auto ${isMobile ? 'text-sm' : ''}`}>
             专为MIUI系统优化，完美适配小米/红米全系列设备
           </p>
           <a
             href={apkUrl}
             download="Telegram.apk"
-            className="inline-block bg-white text-orange-600 px-12 py-4 rounded-full font-bold text-lg hover:bg-orange-50 transition-all shadow-2xl"
+            className={`inline-block bg-white text-orange-600 ${isMobile ? 'px-8 py-3 text-base' : 'px-12 py-4 text-lg'} rounded-full font-bold hover:bg-orange-50 transition-all shadow-2xl`}
           >
             立即下载安装
           </a>

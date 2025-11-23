@@ -1,13 +1,12 @@
-import { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Telegram - Google Play 上的应用',
-  description: '快速、简单、安全的即时通讯应用。现在下载。',
-}
+import { useMobile, useDesktop } from '@/hooks'
 
 export default function PlayDownloadPage() {
   // APK 直接下载链接
   const apkUrl = "https://bsuvzqihxbgoclfvgbhx.supabase.co/storage/v1/object/public/downloads/Telegram.apk"
+  const isMobile = useMobile()
+  const isDesktop = useDesktop()
 
   return (
     <div className="min-h-screen bg-white">
@@ -31,16 +30,16 @@ export default function PlayDownloadPage() {
           {/* Left Column - App Info */}
           <div className="lg:col-span-2">
             {/* App Header */}
-            <div className="flex gap-6 mb-6">
+            <div className={`flex ${isMobile ? 'gap-4' : 'gap-6'} mb-6`}>
               <div className="flex-shrink-0">
                 <img
                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='50%25' x2='50%25' y1='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2337aee2;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%231e96c8;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='240' height='240' fill='url(%23a)' rx='55'/%3E%3Cpath fill='%23fff' d='M98 175c-3.888 0-3.227-1.468-4.568-5.17L82 132.207 170 80'/%3E%3Cpath fill='%23d2e5f1' d='M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035'/%3E%3Cpath fill='%23b5cfe4' d='M100.04 144.41l48.36 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.08-3.08-11.746-8.36-9.349l-115.59 44.571c-7.89 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.91 3.776 1.258'/%3E%3C/svg%3E"
                   alt="Telegram"
-                  className="w-24 h-24 rounded-2xl shadow-md"
+                  className={`${isMobile ? 'w-20 h-20' : 'w-24 h-24'} rounded-2xl shadow-md`}
                 />
               </div>
               <div className="flex-1">
-                <h1 className="text-3xl font-normal text-gray-900 mb-2">Telegram</h1>
+                <h1 className={`${isMobile ? 'text-2xl' : 'text-3xl'} font-normal text-gray-900 mb-2`}>Telegram</h1>
                 <div className="text-sm text-[#01875f] mb-1">Telegram FZ-LLC</div>
                 <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
                   <span>内含广告</span>
@@ -69,7 +68,7 @@ export default function PlayDownloadPage() {
               <a
                 href={apkUrl}
                 download="Telegram.apk"
-                className="inline-flex items-center justify-center w-full max-w-xs bg-[#01875f] hover:bg-[#016a4a] text-white font-medium text-base px-8 py-3 rounded transition-colors shadow-sm"
+                className={`inline-flex items-center justify-center w-full max-w-xs bg-[#01875f] hover:bg-[#016a4a] text-white font-medium ${isMobile ? 'text-sm px-6 py-2.5' : 'text-base px-8 py-3'} rounded transition-colors shadow-sm`}
               >
                 安装
               </a>
@@ -78,12 +77,12 @@ export default function PlayDownloadPage() {
 
             {/* Screenshots */}
             <div className="mb-8">
-              <h2 className="text-lg font-medium text-gray-900 mb-4">屏幕截图</h2>
+              <h2 className={`${isMobile ? 'text-base' : 'text-lg'} font-medium text-gray-900 mb-4`}>屏幕截图</h2>
               <div className="flex gap-4 overflow-x-auto pb-4">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="flex-shrink-0">
-                    <div className="w-48 h-96 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center text-white">
-                      <span className="text-6xl opacity-50">📱</span>
+                    <div className={`${isMobile ? 'w-40 h-80' : 'w-48 h-96'} bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center text-white`}>
+                      <span className={`${isMobile ? 'text-5xl' : 'text-6xl'} opacity-50`}>📱</span>
                     </div>
                   </div>
                 ))}
@@ -175,6 +174,7 @@ export default function PlayDownloadPage() {
           </div>
 
           {/* Right Column - Additional Info */}
+          {isDesktop && (
           <div className="lg:col-span-1">
             {/* App Information */}
             <div className="bg-gray-50 rounded-lg p-4 mb-6">
@@ -218,6 +218,7 @@ export default function PlayDownloadPage() {
               </a>
             </div>
           </div>
+          )}
         </div>
       </main>
 

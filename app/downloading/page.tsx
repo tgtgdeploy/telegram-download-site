@@ -2,11 +2,13 @@
 
 import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { useMobile } from '@/hooks'
 
 function DownloadingContent() {
   const searchParams = useSearchParams()
   const platform = searchParams.get('platform') || 'android'
   const [countdown, setCountdown] = useState(3)
+  const isMobile = useMobile()
 
   useEffect(() => {
     // 倒计时
@@ -27,10 +29,10 @@ function DownloadingContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-telegram-blue to-telegram-light flex items-center justify-center px-4">
-      <div className="bg-white rounded-2xl shadow-2xl p-12 max-w-md w-full text-center">
+      <div className={`bg-white rounded-2xl shadow-2xl ${isMobile ? 'p-8' : 'p-12'} max-w-md w-full text-center`}>
         {/* Telegram Logo */}
         <div className="flex justify-center mb-8">
-          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 256 256">
+          <svg xmlns="http://www.w3.org/2000/svg" width={isMobile ? "64" : "80"} height={isMobile ? "64" : "80"} viewBox="0 0 256 256">
             <defs>
               <linearGradient id="telegramGradient" x1="50%" x2="50%" y1="0%" y2="100%">
                 <stop offset="0%" stopColor="#2AABEE"></stop>
@@ -42,17 +44,17 @@ function DownloadingContent() {
           </svg>
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
+        <h1 className={`${isMobile ? 'text-2xl' : 'text-3xl'} font-bold text-gray-900 mb-4`}>
           正在准备下载...
         </h1>
 
-        <p className="text-gray-600 mb-8">
+        <p className={`text-gray-600 mb-8 ${isMobile ? 'text-sm' : ''}`}>
           您的下载即将开始
         </p>
 
         {/* 倒计时 */}
         <div className="mb-8">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-telegram-blue text-white text-4xl font-bold">
+          <div className={`inline-flex items-center justify-center ${isMobile ? 'w-16 h-16 text-3xl' : 'w-20 h-20 text-4xl'} rounded-full bg-telegram-blue text-white font-bold`}>
             {countdown}
           </div>
         </div>
@@ -68,7 +70,7 @@ function DownloadingContent() {
 
         <a
           href={`/api/download?platform=${platform}`}
-          className="inline-block bg-telegram-blue text-white px-8 py-3 rounded-full font-semibold hover:bg-telegram-dark transition"
+          className={`inline-block bg-telegram-blue text-white ${isMobile ? 'px-6 py-2.5 text-sm' : 'px-8 py-3'} rounded-full font-semibold hover:bg-telegram-dark transition`}
         >
           立即下载
         </a>

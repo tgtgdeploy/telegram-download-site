@@ -1,13 +1,10 @@
-import { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Telegram - 应用宝官方下载',
-  description: 'Telegram应用宝官方下载页。腾讯应用宝提供安全下载，免费安全的即时通讯应用，支持端对端加密。',
-  keywords: ['Telegram应用宝', 'Telegram腾讯下载', 'Telegram安卓下载', 'Telegram应用宝官网', 'TelegramAPK应用宝'],
-}
+import { useMobile } from '@/hooks'
 
 export default function BaiduDownloadPage() {
   const apkUrl = "https://bsuvzqihxbgoclfvgbhx.supabase.co/storage/v1/object/public/downloads/Telegram.apk"
+  const isMobile = useMobile()
 
   return (
     <div className="min-h-screen bg-white">
@@ -27,51 +24,53 @@ export default function BaiduDownloadPage() {
 
       <main className="max-w-6xl mx-auto px-4 py-8">
         {/* App Header */}
-        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl shadow-xl p-8 mb-6">
-          <div className="flex gap-6 items-start">
+        <div className={`bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl shadow-xl ${isMobile ? 'p-5' : 'p-8'} mb-6`}>
+          <div className={`flex ${isMobile ? 'gap-4' : 'gap-6'} items-start`}>
             <img
               src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='50%25' x2='50%25' y1='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2337aee2'/%3E%3Cstop offset='100%25' style='stop-color:%231e96c8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='240' height='240' fill='url(%23a)' rx='55'/%3E%3Cpath fill='%23fff' d='M98 175c-3.888 0-3.227-1.468-4.568-5.17L82 132.207 170 80'/%3E%3Cpath fill='%23d2e5f1' d='M98 175c3 0 4.325-1.372 6-3l16-15.558-19.958-12.035'/%3E%3Cpath fill='%23b5cfe4' d='M100.04 144.41l48.36 35.729c5.519 3.045 9.501 1.468 10.876-5.123l19.685-92.763c2.015-8.08-3.08-11.746-8.36-9.349l-115.59 44.571c-7.89 3.165-7.843 7.567-1.438 9.528l29.663 9.259 68.673-43.325c3.242-1.966 6.218-.91 3.776 1.258'/%3E%3C/svg%3E"
               alt="Telegram"
-              className="w-28 h-28 rounded-3xl shadow-2xl flex-shrink-0"
+              className={`${isMobile ? 'w-20 h-20' : 'w-28 h-28'} rounded-3xl shadow-2xl flex-shrink-0`}
             />
             <div className="flex-1">
               <div className="flex items-center gap-3 mb-2">
-                <h1 className="text-4xl font-bold text-gray-900">Telegram</h1>
+                <h1 className={`${isMobile ? 'text-2xl' : 'text-4xl'} font-bold text-gray-900`}>Telegram</h1>
                 <span className="px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">安全认证</span>
               </div>
-              <div className="text-base text-gray-600 mb-4">社交通讯 | 全球通 | Telegram FZ-LLC</div>
-              <div className="flex items-center gap-8 mb-6">
+              <div className={`${isMobile ? 'text-sm' : 'text-base'} text-gray-600 mb-4`}>社交通讯 | 全球通 | Telegram FZ-LLC</div>
+              <div className={`flex ${isMobile ? 'flex-col gap-3' : 'items-center gap-8'} mb-6`}>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">4.8分</div>
-                  <div className="text-yellow-500 text-lg">★★★★★</div>
+                  <div className={`${isMobile ? 'text-2xl' : 'text-3xl'} font-bold text-blue-600`}>4.8分</div>
+                  <div className={`text-yellow-500 ${isMobile ? 'text-base' : 'text-lg'}`}>★★★★★</div>
                   <div className="text-xs text-gray-500 mt-1">500万人评价</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">10亿+</div>
+                  <div className={`${isMobile ? 'text-xl' : 'text-2xl'} font-bold text-gray-900`}>10亿+</div>
                   <div className="text-sm text-gray-600 mt-1">下载量</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">91.5 MB</div>
+                  <div className={`${isMobile ? 'text-xl' : 'text-2xl'} font-bold text-gray-900`}>91.5 MB</div>
                   <div className="text-sm text-gray-600 mt-1">安装包</div>
                 </div>
               </div>
-              <div className="flex gap-4">
+              <div className={`flex ${isMobile ? 'flex-col gap-3' : 'gap-4'}`}>
                 <a
                   href={apkUrl}
                   download="Telegram.apk"
-                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-16 py-4 rounded-xl font-bold text-lg transition-all shadow-xl flex items-center gap-2"
+                  className={`bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white ${isMobile ? 'px-10 py-3 text-base' : 'px-16 py-4 text-lg'} rounded-xl font-bold transition-all shadow-xl flex items-center justify-center gap-2`}
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/>
                   </svg>
                   普通下载
                 </a>
-                <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-colors flex items-center gap-2">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
-                  收藏
-                </button>
+                {!isMobile && (
+                  <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-colors flex items-center gap-2">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    收藏
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -207,20 +206,20 @@ export default function BaiduDownloadPage() {
         </div>
 
         {/* Download CTA */}
-        <div className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 rounded-3xl shadow-2xl p-10 text-center text-white">
-          <div className="text-5xl mb-4">🎉</div>
-          <h2 className="text-3xl font-bold mb-3">腾讯应用宝官方渠道</h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        <div className={`bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 rounded-3xl shadow-2xl ${isMobile ? 'p-6' : 'p-10'} text-center text-white`}>
+          <div className={`${isMobile ? 'text-4xl' : 'text-5xl'} mb-4`}>🎉</div>
+          <h2 className={`${isMobile ? 'text-xl' : 'text-3xl'} font-bold mb-3`}>腾讯应用宝官方渠道</h2>
+          <p className={`${isMobile ? 'text-base' : 'text-xl'} text-white/90 mb-8 max-w-2xl mx-auto`}>
             安全认证 · 正版保证 · 一键安装 · 极速下载
           </p>
           <a
             href={apkUrl}
             download="Telegram.apk"
-            className="inline-block bg-white text-blue-600 px-16 py-5 rounded-2xl font-bold text-xl hover:bg-blue-50 transition-all shadow-2xl transform hover:scale-105"
+            className={`inline-block bg-white text-blue-600 ${isMobile ? 'px-10 py-3.5 text-base' : 'px-16 py-5 text-xl'} rounded-2xl font-bold hover:bg-blue-50 transition-all shadow-2xl transform hover:scale-105`}
           >
             立即安全下载
           </a>
-          <p className="text-sm text-white/80 mt-6">
+          <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/80 mt-6`}>
             文件大小：91.5 MB | 需要Android 6.0及以上 | 已通过腾讯安全认证
           </p>
         </div>
