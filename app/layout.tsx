@@ -43,7 +43,7 @@ const androidKeywords = [
   'Telegram电脑版',
 ]
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://venerable-concha-42e618.netlify.app'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tg-downloads.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
