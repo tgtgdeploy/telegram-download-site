@@ -125,7 +125,6 @@ export const metadata: Metadata = {
     'theme-color': '#2AABEE',
     'msapplication-TileColor': '#2AABEE',
     'msapplication-navbutton-color': '#2AABEE',
-    'apple-mobile-web-app-status-bar-style': '#2AABEE',
   },
 }
 
