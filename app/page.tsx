@@ -56,19 +56,27 @@ export default function DownloadPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">Android</h3>
               <p className="text-gray-600 text-center mb-4">{downloads.android.fileSize} • {downloads.android.minVersion}</p>
               <div className="space-y-3">
+                {/* APK直接下载 - 主要按钮 */}
+                <a
+                  href="/downloading?platform=android"
+                  className="block w-full bg-green-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-green-700 transition shadow-lg"
+                >
+                  <div className="flex items-center justify-center gap-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    APK 直接下载
+                  </div>
+                  <span className="text-xs opacity-90">（推荐）无需Google服务</span>
+                </a>
+                {/* Google Play - 次要按钮 */}
                 <a
                   href={downloads.android.playStore}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-green-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+                  className="block w-full bg-white border-2 border-green-600 text-green-600 text-center py-3 rounded-lg font-semibold hover:bg-green-50 transition"
                 >
                   Google Play 下载
-                </a>
-                <a
-                  href="/downloading?platform=android"
-                  className="block w-full bg-gray-700 text-white text-center py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
-                >
-                  APK 直接下载
                 </a>
               </div>
             </div>
