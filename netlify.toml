@@ -8,8 +8,4 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# 重定向规则
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Next.js 会自动处理路由，不需要额外的重定向规则
